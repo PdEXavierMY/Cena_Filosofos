@@ -1,13 +1,13 @@
 import tkinter as tk
 from filosofos_samplecode import *
 import math
-class Ventana():
+class Ventana(): #VENTANA DE LA APLICACION
     def __init__(self):
         self.root=tk.Tk()
         alto=35
         ancho=60
         self.root.title("La comida de los filósofos")
-        self.root.geometry("1000x800")
+        self.root.geometry("1000x800") #TAMAÑO DE LA VENTANA
         self.fondo="light blue"
         self.root.configure(bg=self.fondo)
         self.text = tk.Text(self.root, height=alto, width=ancho)
@@ -17,9 +17,10 @@ class Ventana():
         self.tenedores=[]
         self.añadirCaja()
         self.text.configure(yscrollcommand=self.scroll.set)
-        self.text.pack(side=tk.LEFT)
+        self.text.place(x=10, y=160, height=500, width=500)
         self.scroll.config(command=self.text.yview)
         self.scroll.pack(side=tk.RIGHT, fill=tk.Y)
+        #Los siguientes labels son para la leyenda y el contador de comidas
         tk.Label(self.root, text="Leyenda ", font='Helvetica 18 bold', bg=self.fondo).place(x=275,y=0)
         tk.Label(self.root, text=" ",bg="pink").place(x=35,y=40)
         tk.Label(self.root, text="Filósofo entra a comer", bg=self.fondo).place(x=50,y=40)
@@ -40,6 +41,7 @@ class Ventana():
         tk.Label(self.root, text="Cuántas veces han comido:", font='Helvetica 16 bold', bg=self.fondo).place(x=600,y=110)
     def añadirCaja(self):
         angulo=math.pi/N
+        #Añade las cajas que representan a los filósofos
         for i in range(N):
             cajaaux= tk.Entry(self.root)
             cajaaux.place(x=700,y=140+i*20)
@@ -52,7 +54,7 @@ class Ventana():
             self.caja.append(cajaaux)
             self.labels.append(label)
             self.tenedores.append(label2)
-    def escribe(self,texto):
+    def escribe(self,texto): #ESCRIBE EN LA VENTANA
         self.text.insert(tk.END, str(texto)+"\n")
         print(str(texto))
         self.text.see(tk.END)
