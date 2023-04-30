@@ -120,9 +120,7 @@ class filosofo(threading.Thread):
         if filosofo.estado[i] == 'HAMBRIENTO' and filosofo.estado[self.izquierda(i)] != 'COMIENDO' and filosofo.estado[self.derecha(i)] != 'COMIENDO':
             filosofo.estado[i]='COMIENDO'
             filosofo.tenedores[i].release()  #SI SUS VECINOS NO ESTAN COMIENDO AUMENTA EL SEMAFORO DEL TENEDOR Y CAMBIA SU ESTADO A COMIENDO
-            """self.vent.tenedores[self.id].config(bg="blue")
-            self.vent.tenedores[(self.id+1)%N].config(bg="blue")
-            print("FILOSOFO {} coge tenedor {} y {}".format(self.id, self.id,(self.id+1)%N))"""
+
     def tomar(self):
         time.sleep(2)
         filosofo.semaforo.acquire() #SEÑALA QUE TOMARA LOS TENEDORES (EXCLUSION MUTUA)
@@ -143,20 +141,20 @@ class filosofo(threading.Thread):
 
     def comer(self):
         self.vent.tenedores[self.id].config(bg="blue")
-        self.vent.tenedores[(self.id+1)%N].config(bg="blue")
+        self.vent.tenedores[(self.id-1)%N].config(bg="blue")
         print("FILOSOFO {} coge tenedor {} y {}".format(self.id, self.id,(self.id+1)%N))
 
         self.vent.escribe("FILOSOFO {} COMIENDO".format(self.id))
 
         self.vent.labels[self.id].config(bg="gold")
         self.vent.tenedores[self.id].config(bg="blue", fg="white")
-        self.vent.tenedores[(self.id+1)%N].config(bg="blue", fg="white")
-        time.sleep(4) #TIEMPO ARBITRARIO PARA COMER
+        self.vent.tenedores[(self.id-1)%N].config(bg="blue", fg="white")
+        time.sleep(4) #TIEMPO PARA COMER
         self.vent.escribe("FILOSOFO {} TERMINO DE COMER".format(self.id))
 
         print("FILOSOFO {} suelta tenedor {} y {}".format(self.id, self.id,(self.id+1)%N))
         self.vent.tenedores[self.id].config(bg="grey", fg="white")
-        self.vent.tenedores[(self.id+1)%N].config(bg="grey", fg="white")
+        self.vent.tenedores[(self.id-1)%N].config(bg="grey", fg="white")
 
         self.comida+=1
         self.vent.caja[self.id].delete(0,END)
