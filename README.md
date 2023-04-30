@@ -205,6 +205,6 @@ Ahora vamos a ver la salida por terminal del main:
 
 ![Interfaz1](https://user-images.githubusercontent.com/91721699/235370893-f4090191-fbd6-4574-87d5-93c4c5ed7bef.png)
 
-Esta sería la aparencia de la interfaz pasada unos segundos, es decir, cuando el código sigue en marcha. Y esta próxima imagen sería al final de la ejecución, cuando todos los filosofos estan ya hinchados de comer y pensar:
+Esta sería la aparencia de la interfaz pasada unos segundos, es decir, cuando el código sigue en marcha. Y esta próxima imagen sería al final de la ejecución, cuando todos los filosofos están ya hinchados de comer y pensar:
 
 ![Interfaz2](https://user-images.githubusercontent.com/91721699/235370901-a2a1b21c-71cf-44b0-a870-f5e8065c29cc.png)
