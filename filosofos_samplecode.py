@@ -24,9 +24,6 @@ class filosofo(threading.Thread):
         self.vent.escribe("FILOSOFO {0} - PENSANDO".format(self.id))
         filosofo.semaforo.release()  # Libero el semáforo
 
-    def __del__(self):
-        self.vent.escribe("FILOSOFO {0} - Se para de la mesa".format(self.id))  #NECESARIO PARA SABER CUANDO TERMINA EL THREAD
-
     def pensar(self):
         time.sleep(random.randint(0,5)) #CADA FILOSOFO SE TOMA DISTINTO TIEMPO PARA PENSAR, ALEATORIO
 

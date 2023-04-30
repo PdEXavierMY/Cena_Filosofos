@@ -1,6 +1,7 @@
 import tkinter as tk
 from filosofos_samplecode import *
 import math
+
 class Ventana(): #VENTANA DE LA APLICACION
     def __init__(self):
         self.root=tk.Tk()
@@ -60,18 +61,3 @@ class Ventana(): #VENTANA DE LA APLICACION
         self.text.see(tk.END)
     def run(self):
         self.root.mainloop()
-
-
-if __name__ == "__main__":
-    V=Ventana()
-
-    lista=[]
-    for i in range(N):
-        lista.append(filosofo(V)) #AGREGA UN FILOSOFO A LA LISTA
-
-
-    for f in lista:
-        f.start() #ES EQUIVALENTE A RUN()
-    V.run()
-    for f in lista:
-        f.join() #BLOQUEA HASTA QUE TERMINA EL THREAD
