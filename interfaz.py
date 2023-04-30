@@ -55,8 +55,11 @@ class Ventana():
     def escribe(self,texto):
         self.text.insert(tk.END, str(texto)+"\n")
         print(str(texto))
+        self.text.see(tk.END)
     def run(self):
         self.root.mainloop()
+
+
 if __name__ == "__main__":
     V=Ventana()
 
